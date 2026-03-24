@@ -3,9 +3,9 @@ from vpython import *
 
 # --- Scene Setup ---
 scene.title = " Bungee Jump simulation"
-scene.background = color.white 
-scene.width = 800
-scene.height = 600
+scene.background = color.red
+scene.width = 700
+scene.height = 500
 
 # --- Objects ---
 # Ground at y=0
