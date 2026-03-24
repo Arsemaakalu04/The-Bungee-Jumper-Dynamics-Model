@@ -56,8 +56,8 @@ while True:
     # Gravity
     Fg = m * g
     
-    # Spring Force (Hooke's Law: only pulls when distance < L0)
-    Fspring = vector(1,1,1)
+    # Spring Force (Hooke's Law: only pulls when distance > L0)
+    Fspring = vector(0,0,0)
     if distance > L0:
         stretch = distance - L0
         Fspring = -k * stretch * norm(r_vec)
