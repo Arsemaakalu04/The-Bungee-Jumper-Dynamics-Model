@@ -24,4 +24,6 @@ Dagmawit Tademe, Eldana Kibru, Sara Abate, Sabrin Abuna, Sena Abyi, Yerosen Bele
 * **Group 7:**
 Arsema Akalu, Eliyana Dagnachew, Etsubdink Gebru, Maraki Elias, Saron Solomon, Siyam Abdurezak.
 ### 🔗 Related Links
- * 
+ * https://github.com/Eliyana-Dagnachew07/The-Bungee-Jumper-Dynamics-Model/blob/main/bungee-jump.py
+ * https://www.glowscript.org/#/user/Eliyanadagnachew/folder/MyPrograms/program/bungeejumpsimulation/edit
+ * https://www.overleaf.com/2953134999kyfdbcbgyqkr#9b5916
