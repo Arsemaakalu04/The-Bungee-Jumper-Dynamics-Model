@@ -3,16 +3,7 @@ from vpython import *
 from random import random
 
 # ----------------------------- Scene Setup -----------------------------
-scene.title = "Bungee Jump Simulation"
-scene.width = 1000
-scene.height = 600
-scene.background = color.black
-scene.range = 40
-# FIXED CAMERA: Set the center once
-scene.center = vector(5, 12, 0) 
-scene.userspin = True
-
-# ----------------------------- Stars and Moon -----------------------------
+-------------------- Stars and Moon -----------------------------
 
 ground = box(pos=vector(0,0,0), size=vector(60,1,60), color=vector(0.5,0.35,0.2))
 building = box(pos=vector(-10,15,0), size=vector(4,30,4), color=color.gray(0.5))
@@ -33,14 +24,6 @@ v = vector(1.5, 0, 0)
 # ----------------------------- Bungee Cord -----------------------------
 cord = cylinder(pos=top_edge, axis=jumper.pos - top_edge, radius=0.1, color=color.cyan)
 
-# ----------------------------- Physics -----------------------------
-g = vector(0,-9.8,0)
-m = 70
-k = 100    # Spring stiffness
-L0 = 8    # Unstretched length
-b = 1.2    # Air resistance
-dt = 0.01
-t = 0
 
 # Trackers
 max_stretch = 0
@@ -75,42 +58,14 @@ while True:
     Fdrag = -b * v
     Fnet = Fg + Fspring + Fdrag
 
-    # Motion Update
-    a = Fnet / m
-    v = v + a * dt
-    jumper.pos = jumper.pos + v * dt
-    
-    # G-Force Tracker
-    current_g = mag(a)/9.8
-    if current_g > max_g_force:
-        max_g_force = current_g
-
-    # Phase Detection
     if distance < L0:
         phase = " Stage 1 Free fall"
     elif v.y < 0:
         phase = " Stage 2 Cord streching"
     else:
         phase = " Stage 3 Rebound and oscillation"
-    
-    phase_info.text = phase
 
-    # Update Visual Cord
-    cord.axis = jumper.pos - top_edge
-
-    # Track lowest point
-    if jumper.pos.y < lowest_y:
-        lowest_y = jumper.pos.y
-    if not lowest_reached and v.y > 0 and distance > L0:
-        lowest_reached = True
-
-    # 5. Update HUD
-  
     )
     record_info.text = "MAX G: " + round(max_g_force, 2) + "\nMAX STRETCH: " + round(max_stretch, 1) + "m"
 
-    # Equilibrium stop check
-    equilibrium_dist = L0 + (mag(Fg)/k)
-    if mag(v) < 0.05 and abs(distance - equilibrium_dist) < 0.1:
-        v = vector(0,0,0)
-        fixed_info.text = "Stable. Max G experienced: " + str(round(max_g, 2))
+   
