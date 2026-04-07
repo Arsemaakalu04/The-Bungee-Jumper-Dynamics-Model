@@ -10,9 +10,6 @@ This simulation models a jumper's descent from a building to study Newtonian mec
 The motion is governed by Newton's Second Law (m \frac{d^2x}{dt^2} = \sum F). The simulation accounts for three primary forces:
  1. **Gravity (F_g = mg):** The dominant force during the initial free fall.
  2. **Spring Force (F_s = -k(x - L_0)):** The restoring force provided by the bungee cord (Hooke's Law).
- 3. **Damping Force (F_d = -bv):** Mimics air resistance and internal friction to stabilize oscillations.
-### Numerical Approach
-Because the resulting second-order differential equation is difficult to solve analytically, we implemented the **Euler-Cromer method** to approximate the motion step-by-step.
 ## 📊 Key Observations
  * **Free Fall:** Initially, gravity causes the jumper to accelerate downward.
  * **Restoring Phase:** As the cord stretches, the spring force eventually exceeds the jumper's weight, decelerating the mass.
