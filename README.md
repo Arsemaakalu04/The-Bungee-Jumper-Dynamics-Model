@@ -21,7 +21,7 @@ The motion is governed by Newton's Second Law (m \frac{d^2x}{dt^2} = \sum F). Th
 ## 👥 Contributors (Section B)
 **Group 1:**
 Dagmawit Tademe, Eldana Kibru, Sara Abate, Sabrin Abuna, Sena Abyi, Yerosen Belete, Yerosen Getachew.
-**Group 7:**
+* **Group 7:**
 Arsema Akalu, Eliyana Dagnachew, Etsubdink Gebru, Maraki Elias, Saron Solomon, Siyam Abdurezak.
 ### 🔗 Related Links
  * 
