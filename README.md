@@ -5,6 +5,7 @@ This simulation models a jumper's descent from a building to study Newtonian mec
  * Maximum Cord Stretch: 16.44 m
  * Maximum G-Force: 1.91 g
  * Minimum Height Above Ground: 2.67 m
+   
 🚀 Physics & Methodology
 The motion is governed by Newton's Second Law (m \frac{d^2x}{dt^2} = \sum F). The simulation accounts for three primary forces:
  1. Gravity (F_g = mg): The dominant force during the initial free fall.
