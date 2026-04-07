@@ -108,3 +108,53 @@ while True:
         phase = "Phase 2: Cord Stretching"
     else:
         phase = "Phase 3: Rebound / Oscillation"
+    # ---------------- Forces ----------------
+Fg = m * g
+Fspring = vector(0,0,0)
+stretch = 0
+
+if distance > L0:
+    stretch = distance - L0
+    Fspring = -k * stretch * norm(r_vec)
+    if stretch > max_stretch:
+        max_stretch = stretch
+
+Fdrag = -b * v
+Fnet = Fg + Fspring + Fdrag
+
+# ---------------- Motion Update ----------------
+a = Fnet / m
+v = v + a * dt
+jumper.pos = jumper.pos + v * dt
+current_g = mag(a)/9.8
+
+if current_g > max_g_force:
+    max_g_force = current_g
+
+# Track lowest point
+if jumper.pos.y < lowest_y:
+    lowest_y = jumper.pos.y
+if not lowest_reached and v.y > 0:
+    lowest_reached = True
+
+cord.axis = jumper.pos - top_edge
+
+# ---------------- Stop Oscillation ----------------
+# If speed and stretch are small, stop
+if abs(v.y) < 0.05 and abs(distance - L0) < 0.05 and lowest_reached:
+    v = vector(0,0,0)
+    jumper.pos = jumper.pos  # Keep jumper at rest
+
+# ---------------- Update HUD ----------------
+live_info.text = (
+    "Time: " + str(round(t,2)) + " s\n"
+    + "Current Stretch: " + str(round(stretch,2)) + " m\n"
+    + "Current G-Force: " + str(round(current_g,2)) + " g"
+)
+
+if lowest_reached:
+    fixed_info.text = (
+        "Max Stretch: " + str(round(max_stretch,2)) + " m\n"
+        + "Max G-Force: " + str(round(max_g_force,2)) + " g\n"
+        + "Lowest Point: " + str(round(lowest_y,2)) + " m"
+    ) 
