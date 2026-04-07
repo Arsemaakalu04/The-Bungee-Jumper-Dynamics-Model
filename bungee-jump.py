@@ -8,7 +8,7 @@ scene.width = 1000
 scene.height = 600
 scene.background = color.black
 scene.range = 40
-# FIXED CAMERA: Set the center once, do not update it in the loop
+# FIXED CAMERA: Set the center once
 scene.center = vector(5, 12, 0) 
 scene.userspin = True
 
@@ -44,7 +44,7 @@ cord = cylinder(pos=top_edge, axis=jumper.pos - top_edge, radius=0.1, color=colo
 g = vector(0,-9.8,0)
 m = 70
 k = 100    # Spring stiffness
-L0 = 15    # Unstretched length
+L0 = 8    # Unstretched length
 b = 1.2    # Air resistance
 dt = 0.01
 t = 0
@@ -100,11 +100,11 @@ while True:
 
     # Phase Detection
     if distance < L0:
-        phase = "FREE FALL"
+        phase = " Stage 1 Free fall"
     elif v.y < 0:
-        phase = "CORD STRETCHING"
+        phase = " Stage 2 Cord streching"
     else:
-        phase = "REBOUND"
+        phase = " Stage 3 Rebound"
     
     phase_info.text = phase
 
@@ -121,7 +121,20 @@ while True:
     if lowest_reached and mag(v) < 0.2 and abs(distance - (L0 + (m*9.8/k))) < 0.1:
         v = vector(0,0,0)
 
-    # Update HUD
-    live_info.text = "Time: " + str(round(t,2)) + "s\nStretch: " + str(round(stretch,1)) + "m"
-    if lowest_reached:
-        fixed_info.text = "Max G: " + str(round(max_g_force,2)) + "\nLowest: " + str(round(lowest_y,1)) + "m"
+    # 5. Update HUD
+    live_info.text = (
+        "Time: " + str(round(t,2)) + "s\n" +
+        "Height: " + str(round(jumper.pos.y,1)) + "m\n" +
+        "G-Force: " + str(round(current_g, 2)) + " g"
+    )
+    record_info.text = (
+        "RECORDS\n" +
+        "MAX G-FORCE: " + str(round(max_g, 2)) + " g\n" +
+        "MAX STRETCH: " + str(round(max_stretch, 2)) + " m"
+    )
+
+    # Equilibrium stop check
+    equilibrium_dist = L0 + (mag(Fg)/k)
+    if mag(v) < 0.05 and abs(distance - equilibrium_dist) < 0.1:
+        v = vector(0,0,0)
+        fixed_info.text = "Stable. Max G experienced: " + str(round(max_g, 2))
