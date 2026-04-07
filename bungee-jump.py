@@ -3,7 +3,7 @@ from vpython import *
 
 # --- Scene Setup ---
 scene.title = " Bungee Jump simulation"
-scene.background = color.white 
+scene.background = color.Black
 scene.width = 800
 scene.height = 600
 
