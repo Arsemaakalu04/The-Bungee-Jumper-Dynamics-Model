@@ -1,0 +1,111 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{panqueques}
+\usepackage{graphicx}
+\title{The Bungee Jumper \\
+Dynamics Model}
+\author{Group 1 and Group 7}
+\date{\today}
+
+\begin{document}
+
+%title-page %%edit in 1-title-page folder
+\include{1-title-page/custom}
+\begin{frame}{Introduction}
+\begin{tcolorbox}[colback=black!10,colframe=black,title=Objectives]
+   \begin{itemize}
+    \item to simulate bungee jump by using Vpython
+    \item  to calculate maximum cord stretch
+    \item to calculate maximum g-forces experienced by the jumper.
+\end{itemize}
+\end{tcolorbox}
+\end{frame}
+\begin{frame}{Forces in Motion}
+\begin{tcolorbox}[colframe=black,]
+Gravity (weight): pulls the jumper downward all the time.\\
+\[
+F_g=mg
+\]
+Elastic force (tension): cord pulls upward when stretched.\\
+\[
+F_R=kx
+\]
+Air resistance (drag): opposes motion, acting opposite to velocity.\\
+\[
+F_d=-bv
+\]
+\end{tcolorbox}
+\end{frame}
+\begin{frame}{What is the maximum cord stretch and maximum g-force?}
+\begin{tcolorbox}[colback=black!10,colframe=black,title=Maximum cord stretch]
+Maximum cord stretch is the longest extension of the bungee cord during a jump.\\
+It occurs at the lowest point when the jumper’s velocity is zero.\\
+At this point, the cord stores the most elastic potential energy.\\
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=black!10,colframe=black,title=Maximum g-force]
+Maximum g-force is the largest force per unit weight felt by the jumper.\\
+It occurs at the lowest point of the jump when the cord’s tension is greatest.\\
+This is when the jumper experiences the strongest upward acceleration.\\
+\end{tcolorbox}
+\end{frame}
+\begin{frame}{How can we calculate maximum cord stretch and maximum g-force?}
+\begin{tcolorbox}[colback=black!10,colframe=black,title=Maximum cord stretch]
+$L$ = total length of the cord\\
+$x$ = cord stretch\\
+$x_{max}$ = maximum cord stretch\\
+$h= L + x$\\
+At lowest point all gravitational potential energy becomes elastic potential energy.\\
+\[
+mgh=\frac{1}{2}kx_{max}^2
+\]
+\[
+mg(L+x)=\frac{1}{2}kx_{max}^2
+\]
+\[
+x_{max}= \sqrt{\frac{2mg(L+x)}{k}}
+\]
+\end{tcolorbox}
+\end{frame}
+\begin{frame}
+\begin{tcolorbox}[colback=black!10,colframe=black,title=Maximum g-force]
+$F_{net}=ma$, $F_{net}=kx_{max}-mg$\\
+$ma=kx_{max}-mg$\\
+$a=\frac{kx_{max}-mg}{m}$\\
+\[
+g-force=\frac{a}{g}
+\]
+\[
+g-force=\frac{\frac{kx_{max}-mg}{m}}{g}
+\]
+\[
+g-force=\frac{kx_{max}}{mg}
+\]
+\end{tcolorbox}
+\end{frame}
+\begin{frame}{The Simulation Environment}
+$g=-9.8m/s^2$\\
+$m=70kg$\\
+$k=100N/m$\\
+$L=8m$\\
+$b=1.2N\cdotp s/m$\\
+$dt=0.01$\\
+$t=0s$
+\begin{tcolorbox}[colframe=black]
+maximum g-force= $1.77N$\\
+maximum cord stretch=$18.9m$\\
+\end{tcolorbox}
+\end{frame}
+\begin{frame}{summary}
+\begin{tcolorbox}[colframe=black]
+A bungee jump involves a person falling under gravity while attached to an elastic cord.
+At first, the jumper is in free fall, experiencing little to no g-force.
+As the cord stretches, an elastic force ($F=kx$) pulls upward and slows the fall.
+At the lowest point, the cord is maximally stretched and the g-force is greatest.
+Afterward, the jumper oscillates up and down until energy is lost due to damping.
+\end{tcolorbox}
+\begin{center}
+\huge \textbf{\textcolor{black}{THANK YOU!}}
+\end{center}
+\end{frame}
+
+\end{document}
