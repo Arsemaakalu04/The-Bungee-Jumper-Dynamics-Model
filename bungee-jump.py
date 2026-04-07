@@ -105,7 +105,7 @@ while True:
         phase = " Stage 2 Cord streching"
     else:
         phase = " Stage 3 Rebound"
-    
+      "and oscillation"
     phase_info.text = phase
 
     # Update Visual Cord
@@ -131,6 +131,7 @@ while True:
         "RECORDS\n" +
         "MAX G-FORCE: " + str(round(max_g, 2)) + " g\n" +
         "MAX STRETCH: " + str(round(max_stretch, 2)) + " m"
+        "MAX G: " + round(max_g_force,2) + "\nMAX STREACH: " + round(max_streach,1) + "m" 
     )
 
     # Equilibrium stop check
