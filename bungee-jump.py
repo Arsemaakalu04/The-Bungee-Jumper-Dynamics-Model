@@ -3,7 +3,7 @@ from vpython import *
 
 # --- Scene Setup ---
 scene.title = " Bungee Jump simulation"
-scene.background = color.Black
+scene.background = vector(0,0,0)
 scene.width = 800
 scene.height = 600
 
@@ -15,7 +15,7 @@ ground = box(pos=vector(0, -0.5, 0), size=vector(60, 1, 60), color=color.green)
 building = box(pos=vector(-10, 15, 0), size=vector(4, 30, 4), color=color.gray(0.5))
 top_edge = vector(-8, 30, 0) # The anchor point for the cord
 
-# Jumper (Added make_trail to see the fall path)
+# Jumper 
 head = sphere(pos=vector(0,0,0), radius=0.4, color=color.yellow)
 body = cylinder(pos=vector(0,0,0), axis=vector(0,-1.2,0), radius=0.2, color=color.red)
 arm_left = cylinder(pos=vector(0,-0.2,0), axis=vector(0.8, 0.8, 0), radius=0.07, color=color.red)
