@@ -59,6 +59,7 @@ lowest_reached = False
 live_info = label(pos=vector(-25,32,-10), height=14, box=False, color=color.white)
 phase_info = label(pos=vector(25,32,-10), height=14, box=False, color=color.yellow)
 fixed_info = label(pos=vector(0,-5,0), height=14, box=False, color=color.cyan)
+record_info = label(pos=vector(40, 32, 10), box=False, height=15, color=color.yellow)
 
 # ----------------------------- Simulation Loop -----------------------------
 running = True
@@ -104,8 +105,8 @@ while True:
     elif v.y < 0:
         phase = " Stage 2 Cord streching"
     else:
-        phase = " Stage 3 Rebound"
-      "and oscillation"
+        phase = " Stage 3 Rebound and oscillation"
+    
     phase_info.text = phase
 
     # Update Visual Cord
@@ -127,12 +128,7 @@ while True:
         "Height: " + str(round(jumper.pos.y,1)) + "m\n" +
         "G-Force: " + str(round(current_g, 2)) + " g"
     )
-    record_info.text = (
-        "RECORDS\n" +
-        "MAX G-FORCE: " + str(round(max_g, 2)) + " g\n" +
-        "MAX STRETCH: " + str(round(max_stretch, 2)) + " m"
-        "MAX G: " + round(max_g_force,2) + "\nMAX STREACH: " + round(max_streach,1) + "m" 
-    )
+    record_info.text = "MAX G: " + round(max_g_force, 2) + "\nMAX STRETCH: " + round(max_stretch, 1) + "m"
 
     # Equilibrium stop check
     equilibrium_dist = L0 + (mag(Fg)/k)
