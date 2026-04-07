@@ -13,12 +13,7 @@ scene.center = vector(5, 12, 0)
 scene.userspin = True
 
 # ----------------------------- Stars and Moon -----------------------------
-for i in range(100):
-    sphere(pos=vector(random()*200-100, random()*80+10, random()*200-100),
-           radius=0.3, color=color.white, emissive=True)
-moon = sphere(pos=vector(80,80,-50), radius=7, color=color.gray(0.9), emissive=True)
 
-# ----------------------------- Environment -----------------------------
 ground = box(pos=vector(0,0,0), size=vector(60,1,60), color=vector(0.5,0.35,0.2))
 building = box(pos=vector(-10,15,0), size=vector(4,30,4), color=color.gray(0.5))
 top_edge = vector(-8,30,0)
@@ -31,9 +26,7 @@ arm_right = cylinder(pos=vector(0,-0.2,0), axis=vector(-0.8,0.8,0), radius=0.07,
 leg1 = cylinder(pos=vector(0,-1.2,0), axis=vector(0.2,-0.8,0), radius=0.07, color=color.red)
 leg2 = cylinder(pos=vector(0,-1.2,0), axis=vector(-0.2,-0.8,0), radius=0.07, color=color.red)
 jumper = compound([head, body, arm_left, arm_right, leg1, leg2])
-
-# ----------------------------- Initial State -----------------------------
-# Start slightly out from the building with a tiny horizontal push
+ush
 jumper.pos = top_edge + vector(0.5, 0, 0)
 v = vector(1.5, 0, 0) 
 
@@ -77,14 +70,7 @@ while True:
     # Forces
     Fg = m * g
     Fspring = vector(0,0,0)
-    stretch = 0
 
-    if distance > L0:
-        stretch = distance - L0
-        # Hooke's Law: F = -k * x
-        Fspring = -k * stretch * norm(r_vec)
-        if stretch > max_stretch:
-            max_stretch = stretch
 
     Fdrag = -b * v
     Fnet = Fg + Fspring + Fdrag
@@ -118,15 +104,8 @@ while True:
     if not lowest_reached and v.y > 0 and distance > L0:
         lowest_reached = True
 
-    # Stop oscillation when energy is dissipated
-    if lowest_reached and mag(v) < 0.2 and abs(distance - (L0 + (m*9.8/k))) < 0.1:
-        v = vector(0,0,0)
-
     # 5. Update HUD
-    live_info.text = (
-        "Time: " + str(round(t,2)) + "s\n" +
-        "Height: " + str(round(jumper.pos.y,1)) + "m\n" +
-        "G-Force: " + str(round(current_g, 2)) + " g"
+  
     )
     record_info.text = "MAX G: " + round(max_g_force, 2) + "\nMAX STRETCH: " + round(max_stretch, 1) + "m"
 
