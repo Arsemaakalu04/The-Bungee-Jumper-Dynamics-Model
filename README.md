@@ -29,9 +29,9 @@ Arsema Akalu, Eliyana Dagnachew, Etsubdink Gebru, Maraki Elias, Saron Solomon, S
  * https://www.overleaf.com/2953134999kyfdbcbgyqkr#9b5916
    <table>
   <tr>
-    <th>Circular Orbit</th>
-    <th>Elliptical Orbit</th>
-    <th>Escape Trajectory</th>
+    <th>free fall</th>
+    <th>rebound</th>
+    <th>stretching</th>
   </tr>
   <tr>
     <td><img src="project_screenshots/free_fall.png" width="300"/></td>
