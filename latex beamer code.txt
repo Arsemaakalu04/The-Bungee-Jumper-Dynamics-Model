@@ -12,7 +12,7 @@ Dynamics Model}
 %title-page %%edit in 1-title-page folder
 \include{1-title-page/custom}
 \begin{frame}{Introduction}
-\begin{tcolorbox}[colback=black!10,colframe=black,title=Objectives]
+\begin{tcolorbox}[colback=brown!10,colframe=brown,title=Objectives]
    \begin{itemize}
     \item to simulate bungee jump by using Vpython
     \item  to calculate maximum cord stretch
