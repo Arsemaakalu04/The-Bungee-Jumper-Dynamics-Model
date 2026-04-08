@@ -27,3 +27,15 @@ Arsema Akalu, Eliyana Dagnachew, Etsubdink Gebru, Maraki Elias, Saron Solomon, S
  * https://github.com/Eliyana-Dagnachew07/The-Bungee-Jumper-Dynamics-Model/blob/main/bungee-jump.py
  * https://www.glowscript.org/#/user/Eliyanadagnachew/folder/MyPrograms/program/bungeejumpsimulation/edit
  * https://www.overleaf.com/2953134999kyfdbcbgyqkr#9b5916
+   <table>
+  <tr>
+    <th>Circular Orbit</th>
+    <th>Elliptical Orbit</th>
+    <th>Escape Trajectory</th>
+  </tr>
+  <tr>
+    <td><img src="project_screenshots/free_fall.png" width="300"/></td>
+    <td><img src="images/rebound.png" width="300"/></td>
+    <td><img src="images/cord_stretching.png" width="300"/></td>
+  </tr>
+</table>
