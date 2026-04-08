@@ -156,9 +156,7 @@ while True:
     if mag(v) < 0.05 and abs(distance - equilibrium_dist) < 0.1:
         v = vector(0,0,0)
         fixed_info.text = "Stable. Max G experienced: " + str(round(max_g_force, 2))
-# 6. Contributor Add-on: Visual Updates
-    # Smoothly move the camera to follow the jumper
-    # We use a 'target' to keep the building in view while following the fall
+# We use a 'target' to keep the building in view while following the fall
     scene.center = vector(0, jumper.pos.y + 5, 0)
     
     # Add the current position to the trail
