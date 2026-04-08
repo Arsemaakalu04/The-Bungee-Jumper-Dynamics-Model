@@ -155,4 +155,4 @@ while True:
     equilibrium_dist = L0 + (mag(Fg)/k)
     if mag(v) < 0.05 and abs(distance - equilibrium_dist) < 0.1:
         v = vector(0,0,0)
-        fixed_info.text = "Stable. Max G experienced: " + str(round(max_g, 2))
+        fixed_info.text = "Stable. Max G experienced: " + str(round(max_g_force, 2))
