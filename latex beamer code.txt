@@ -4,6 +4,7 @@
 \title{The Bungee Jumper \\
 Dynamics Model}
 \author{Group 1 and Group 7}
+\author{St. John Baptist De La Salle]{St. John Baptist De La Salle Catholic School}
 \date{\today}
 
 \begin{document}
