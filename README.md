@@ -34,8 +34,8 @@ Arsema Akalu, Eliyana Dagnachew, Etsubdink Gebru, Maraki Elias, Saron Solomon, S
     <th>stretching</th>
   </tr>
   <tr>
-    <td><img src="free_fall.png" width="300"/></td>
-    <td><img src="rebound.png" width="300"/></td>
-    <td><img src="cord_stretching.png" width="300"/></td>
+    <td><img src="free_fall.jpg" width="300"/></td>
+    <td><img src="rebound.jpg" width="300"/></td>
+    <td><img src="cord_stretching.jpg" width="300"/></td>
   </tr>
 </table>
