@@ -1,112 +1,222 @@
-\documentclass[aspectratio=169]{beamer}
-\usepackage{panqueques}
-\usepackage{graphicx}
-\title{The Bungee Jumper \\
-Dynamics Model}
-\author{Group 1 and Group 7}
-\author{St. John Baptist De La Salle]{St. John Baptist De La Salle Catholic School}
-\date{\today}
+\documentclass{beamer}
+\usepackage{tcolorbox}
+\usepackage{listings}
+% Professional Academic Theme
+\usetheme{Madrid}
 
+% --- Custom Brown Color Theme ---
+\usecolortheme{beaver} 
+\setbeamercolor{structure}{fg=brown!80!black} 
+\setbeamercolor{section in head/foot}{bg=brown!90!black, fg=white}
+\setbeamercolor{block title}{bg=brown!70!black, fg=white}
+\setbeamercolor{block body}{bg=brown!10, fg=black}
+
+% Standardizing the Example Block to match the Brown theme
+\setbeamercolor{block title example}{bg=brown!70!black, fg=white}
+\setbeamercolor{block body example}{bg=brown!10, fg=black}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs} % For professional tables
+\usepackage{xcolor}
+
+% Title Page Information
+\title[Bungee Jump Dynamics Model]{Bungee Jump Dynamics Model}
+
+\author[Groups 1 \& 7]{Section B: Groups 1 \& 7}
+\institute[St. John Baptist De La Salle]{St. John Baptist De La Salle Catholic School}
+\date{April 8, 2026}
 \begin{document}
 
-%title-page %%edit in 1-title-page folder
-\include{1-title-page/custom}
-\begin{frame}{Introduction}
-\begin{tcolorbox}[colback=brown!10,colframe=brown,title=Objectives]
-   \begin{itemize}
-    \item to simulate bungee jump by using Vpython
-    \item  to calculate maximum cord stretch
-    \item to calculate maximum g-forces experienced by the jumper.
-\end{itemize}
-\end{tcolorbox}
-\end{frame}
-\begin{frame}{Forces in Motion}
-\begin{tcolorbox}[colframe=black,]
-Gravity (weight): pulls the jumper downward all the time.\\
-\[
-F_g=mg
-\]
-Elastic force (tension): cord pulls upward when stretched.\\
-\[
-F_R=kx
-\]
-Air resistance (drag): opposes motion, acting opposite to velocity.\\
-\[
-F_d=-bv
-\]
-\end{tcolorbox}
-\end{frame}
-\begin{frame}{What is the maximum cord stretch and maximum g-force?}
-\begin{tcolorbox}[colback=black!10,colframe=black,title=Maximum cord stretch]
-Maximum cord stretch is the longest extension of the bungee cord during a jump.\\
-It occurs at the lowest point when the jumper’s velocity is zero.\\
-At this point, the cord stores the most elastic potential energy.\\
-\end{tcolorbox}
-
-\begin{tcolorbox}[colback=black!10,colframe=black,title=Maximum g-force]
-Maximum g-force is the largest force per unit weight felt by the jumper.\\
-It occurs at the lowest point of the jump when the cord’s tension is greatest.\\
-This is when the jumper experiences the strongest upward acceleration.\\
-\end{tcolorbox}
-\end{frame}
-\begin{frame}{How can we calculate maximum cord stretch and maximum g-force?}
-\begin{tcolorbox}[colback=black!10,colframe=black,title=Maximum cord stretch]
-$L$ = total length of the cord\\
-$x$ = cord stretch\\
-$x_{max}$ = maximum cord stretch\\
-$h= L + x$\\
-At lowest point all gravitational potential energy becomes elastic potential energy.\\
-\[
-mgh=\frac{1}{2}kx_{max}^2
-\]
-\[
-mg(L+x)=\frac{1}{2}kx_{max}^2
-\]
-\[
-x_{max}= \sqrt{\frac{2mg(L+x)}{k}}
-\]
-\end{tcolorbox}
-\end{frame}
+% Slide 1: Title Slide
 \begin{frame}
-\begin{tcolorbox}[colback=black!10,colframe=black,title=Maximum g-force]
-$F_{net}=ma$, $F_{net}=kx_{max}-mg$\\
-$ma=kx_{max}-mg$\\
-$a=\frac{kx_{max}-mg}{m}$\\
-\[
-g-force=\frac{a}{g}
-\]
-\[
-g-force=\frac{\frac{kx_{max}-mg}{m}}{g}
-\]
-\[
-g-force=\frac{kx_{max}}{mg}
-\]
-\end{tcolorbox}
+    \titlepage
 \end{frame}
+
+% Slide 2: Introduction
+\begin{frame}{Introduction}
+    \begin{block}{Objectives}
+    \begin{itemize}
+        \item To simulate bungee jump by using Vpython
+        \item To calculate maximum cord stretch
+        \item To calculate maximum g-forces experienced by the jumper.
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+% Slide 3: Forces
+\begin{frame}{The Physics Model: Force Analysis}
+    The dynamics of the jump are governed by three primary forces:
+    
+    \vspace{0.4cm}
+    \begin{itemize}
+        \item \textbf{Gravity (weight):} Pulls the jumper downward.
+        \begin{equation} F_g=mg \end{equation}
+        \item \textbf{Elastic force (tension):} Cord pulls upward when stretched.
+        \begin{equation} F_R=kx \end{equation}
+        \item \textbf{Air resistance (drag):} Opposes motion.
+        \begin{equation} F_d=-bv \end{equation}
+        \textbf{Net Force Equation:}
+            \[ \sum F = F_g + F_d + F_s \]
+    \end{itemize}
+\end{frame}
+
+% Slide 4: The Physics Model - 3 Stages of the Jump
+\begin{frame}{The Physics Model: 3 Stages of the Jump}
+    The motion is divided into phases based on the state of the bungee cord:
+    
+    \vspace{0.3cm}
+    \begin{enumerate}
+        \item \textbf{Phase 1: Free Fall ($y < L$)} \\
+        The cord is slack; Hooke's Law is inactive ($F_s = 0$).
+        
+        \vspace{0.4cm}
+        \item \textbf{Phase 2: Cord Stretching ($y \geq L$)} \\
+        Hooke's Law activates; upward restoring force $F_s$ begins to decelerate the jumper.
+        
+        \vspace{0.4cm}
+        \item \textbf{Phase 3: Maximum Extension ($v = 0$)} \\
+        Peak stretch ($x_{max}$) and peak upward acceleration (Max G-Force).
+    \end{enumerate}
+\end{frame}
+
+% Slide 5: The Differential Equations of Motion
+\begin{frame}{The Differential Equations of Motion}
+    To simulate the 1D motion, we break the second-order system into two coupled first-order differential equations:
+    
+    \vspace{0.6cm}
+    
+    % Centered Equations
+    \centering
+    {\large \textbf{1. Rate of Change of Position}}
+    \begin{equation*}
+        \frac{dy}{dt} = v
+    \end{equation*}
+
+    \vspace{0.4cm}
+
+    {\large \textbf{2. Rate of Change of Velocity}}
+    \begin{equation*}
+        \frac{dv}{dt} = a = \frac{F_{net}}{m}
+    \end{equation*}
+
+    \vspace{0.8cm}
+    \flushleft
+    \textbf{Dynamics of $F_{net}$:}
+    \begin{itemize}
+        \item \textbf{Initial Fall ($y \leq L$):} $F_{net} = mg - bv$
+        \item \textbf{Cord Stretching ($y > L$):} $F_{net} = mg - bv - k(y-L)$
+    \end{itemize}
+    
+    \vspace{0.2cm}
+    \centering
+  
+\end{frame}
+% Slide 5: Numerical Integration (The Euler Loop)
+\begin{frame}[fragile]{Numerical Integration: The Euler Loop}
+    The simulation updates the state variables in discrete time steps ($dt$) using the Euler Method:
+\vspace{0.3cm}
+    \begin{center}
+    \begin{minipage}{0.9\textwidth}
+    \begin{lstlisting}[language=Python, basicstyle=\ttfamily\small, keywordstyle=\color{brown!80!black}]
+while jumper.pos.y > stop_height:
+    rate(100)
+    
+    # 1. Calculate Net Force (Conditional)
+    Fnet = m * g_vec - b * jumper.vel
+    if jumper.pos.y < (start_height - L):
+        Fnet += -k * stretch_vec
+        
+    # 2. Update Velocity: v = v + a*dt
+    jumper.vel += (Fnet / m) * dt
+    
+    # 3. Update Position: y = y + v*dt
+    jumper.pos += jumper.vel * dt
+    \end{lstlisting}
+    \end{minipage}
+    \end{center}
+
+    \vspace{0.2cm}
+    \centering
+    \textit{\small The loop continues until the jumper reaches the lowest point or stabilizes.}
+\end{frame}
+
+% Slide 5: Calculation (Stretch)
+\begin{frame}{Calculating Maximum Cord Stretch}
+    By applying the Law of Conservation of Energy:
+    
+    \begin{block}{Energy Conversion Formula}
+    At the lowest point, gravitational potential energy becomes elastic potential energy:
+    \begin{equation} mg(L+x) = \frac{1}{2}kx_{max}^2 \end{equation}
+    \vspace{0.2cm}
+    Solving for $x_{max}$:
+    \begin{equation} x_{max} = \sqrt{\frac{2mg(L+x)}{k}} \end{equation}
+    \end{block}
+\end{frame}
+
+% Slide 6: Calculation (G-Force)
+\begin{frame}{Calculating Maximum G-Force}
+    Using Newton's Second Law at the peak of the stretch:
+    
+    \vspace{0.2cm}
+    \centering $F_{net} = ma \implies kx_{max} - mg = ma$
+    
+    \begin{block}{Derivation of G-Force}
+    \begin{equation} a = \frac{kx_{max} - mg}{m} \end{equation}
+    \begin{equation} \text{g-force} = \frac{a}{g} = \frac{kx_{max}}{mg} \end{equation}
+    \end{block}
+\end{frame}
+
+% Slide 7: Environment & Results
 \begin{frame}{The Simulation Environment}
-$g=-9.8m/s^2$\\
-$m=70kg$\\
-$k=100N/m$\\
-$L=8m$\\
-$b=1.2N\cdotp s/m$\\
-$dt=0.01$\\
-$t=0s$
-\begin{tcolorbox}[colframe=black]
-maximum g-force= $1.77N$\\
-maximum cord stretch=$18.9m$\\
-\end{tcolorbox}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \textbf{Input Parameters:}
+            \begin{itemize}
+                \item $g = -9.8 \, m/s^2$
+                \item $m = 70 \, kg$
+                \item $k = 100 \, N/m$
+                \item $L = 8 \, m$
+                \item $b = 1.2 \, N \cdot s/m$
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \centering
+            \textbf{Final Simulation Results}
+            \vspace{0.3cm}
+            
+            % Using a stylized Table instead of a block for results
+            \renewcommand{\arraystretch}{1.5}
+            \begin{tabular}{l r}
+                \toprule
+                \textbf{Metric} & \textbf{Value} \\
+                \midrule
+                Max G-Force & \textbf{1.77 N} \\
+                Max Cord Stretch & \textbf{18.9 m} \\
+                \bottomrule
+            \end{tabular}
+        \end{column}
+    \end{columns}
 \end{frame}
-\begin{frame}{summary}
-\begin{tcolorbox}[colframe=black]
-A bungee jump involves a person falling under gravity while attached to an elastic cord.
-At first, the jumper is in free fall, experiencing little to no g-force.
-As the cord stretches, an elastic force ($F=kx$) pulls upward and slows the fall.
-At the lowest point, the cord is maximally stretched and the g-force is greatest.
-Afterward, the jumper oscillates up and down until energy is lost due to damping.
-\end{tcolorbox}
-\begin{center}
-\huge \textbf{\textcolor{black}{THANK YOU!}}
-\end{center}
+% Slide 11: Final Thank You
+\begin{frame}
+    \centering
+    \vspace{1cm}
+    {\huge \textbf{\textcolor{brown!80!black}{THANK YOU!}}}
+    
+    \vspace{0.8cm}
+    {\large \textbf{Questions \& Discussion}}
+    
+    \vspace{1.2cm}
+    \begin{tcolorbox}[colback=brown!5, colframe=brown!80!black, width=0.7\textwidth, center]
+        \centering
+        \textbf{Group 1 \& 7} \\
+        \small St. John Baptist De La Salle Catholic School \\
+        \textit{Physics Simulation: Bungee Jump Dynamics}
+    \end{tcolorbox}
+    
+    \vspace{0.6cm}
+    \scriptsize \textit{Programmed in VPython | Typeset in \LaTeX}
 \end{frame}
 
 \end{document}
